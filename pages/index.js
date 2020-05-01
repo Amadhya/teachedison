@@ -83,7 +83,7 @@ const Home = () => {
   const [button2Width, setButton2Width] = useState(dataStored ? dataItem['button2Width'] : 30);
   const [button3Width, setButton3Width] = useState(dataStored ? dataItem['button3Width'] : 30);
   const [videoWidth, setVideoWidth] = useState(dataStored ? dataItem['videoWidth'] : 75);
-  const [logoWidth, setLogoWidth] = useState(dataStored ? dataItem['logoWidth'] : 25);
+  const [logoWidth, setLogoWidth] = useState(dataStored ? dataItem['logoWidth'] : 30);
   const [carouselImageWidth, setCarouselImageWidth] = useState(dataStored ? dataItem['carouselImageWidth'] : 75);
   const [title, setTitle] = useState(dataStored ? dataItem['title'] : "The Lorem Ipasum dolor");
   const [subTitle, setSubTitle] = useState(dataStored ? dataItem['subTitle'] : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an unknown printer took a galley of type and scrambled it to make a typespecimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.");
