@@ -43,6 +43,7 @@ const ButtonWrapper = styled(Button)`
     `};
 `;
 const ImageWrapper = styled.img`
+  height: auto;
   width: ${({width}) => width}% ;
   &:hover {
     cursor: pointer;
@@ -220,6 +221,10 @@ const Home = () => {
   const handleEditTel = () => {
     setEditTel(true);
   }
+
+  const storeCord = (id,obj) => {
+    localStorage.setItem(`${id}_cord`,JSON.stringify(obj));
+  }
   
   return (
     <GreyWrapper>
@@ -257,7 +262,7 @@ const Home = () => {
       <CardWrapper slideid={slideId}>
         <Row gutter={1} gap={1}>
           <Col sm={6}>
-            <Draggable>
+            <Draggable id="logo" storeCord={storeCord}>
               <ImageWrapper justify="left" selected={slideId === "logoImage"} width={logoWidth} onClick={handleLogoImage} src="/static/images/logo.png"/>
             </Draggable>
           </Col>
@@ -383,7 +388,7 @@ const Home = () => {
             </Typography>
           )}
           <Separator height={2}/>
-          <Draggable justify="center">
+          <Draggable storeCord={storeCord} id="video" justify="center">
             <ImageWrapper selected={slideId === "video"} width={videoWidth} src="/static/images/video_icon.png" onClick={handleVideoClick}/>
           </Draggable>
           <Separator height={4}/>

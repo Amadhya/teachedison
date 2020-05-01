@@ -29,6 +29,18 @@ export default class Draggable extends React.Component {
     };
   }
 
+  componentDidMount(){
+    const {id} = this.props;
+    const cord_data = JSON.parse(localStorage.getItem(`${id}_cord`));
+
+    if(cord_data){
+      this.setState({
+        translateX: cord_data.clientX,
+        translateY: cord_data.clientY,
+      });
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('mouseup', this.handleMouseUp);
@@ -70,16 +82,27 @@ export default class Draggable extends React.Component {
     });
   };
 
+
   handleMouseUp = () => {
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('mouseup', this.handleMouseUp);
+
+    const {id, storeCord} = this.props;
+    const {translateX, translateY} = this.state;
+    const curr_cord = {
+      'id': id,
+      'clientX': translateX,
+      'clientY': translateY
+    }
+    
+    storeCord(id,curr_cord);
 
     this.setState(
       {
         originalX: 0,
         originalY: 0,
-        lastTranslateX: this.state.translateX,
-        lastTranslateY: this.state.translateY,
+        lastTranslateX: translateX,
+        lastTranslateY: translateY,
 
         isDragging: false
       },
